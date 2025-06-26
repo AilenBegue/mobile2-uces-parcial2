@@ -52,4 +52,5 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.3")
     //picasso
     implementation("com.squareup.picasso:picasso:2.8")
+    implementation ("androidx.cardview:cardview:1.0.0")
 }

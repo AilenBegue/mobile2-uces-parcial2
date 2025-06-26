@@ -7,27 +7,26 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import android.view.LayoutInflater
-import java.nio.charset.CharsetEncoder
 
-class Adapter(private val characters: MutableList<Characters>) : RecyclerView.Adapter<Adapter.ViewHolder>() {
+class Adapter(private val characters: MutableList<Result>) : RecyclerView.Adapter<Adapter.ViewHolder>() {
 
-    lateinit var onItemClickListener: (Characters) -> Unit
+    lateinit var onClickListener: (Result) -> Unit
 
     inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        private val ivCharacter: ImageView = view.findViewById(R.id.ivCharacter)
-        private val ivName: TextView = view.findViewById(R.id.tvName)
+        private val imageViewCharacter: ImageView = view.findViewById(R.id.imageViewCharacter)
+        private val tvName: TextView = view.findViewById(R.id.tvCharacterName)
 
-        fun bind(characters: Characters) {
-            ivName.text = "Nombre"
-
-        }
-
-        fun bind(image: String) {
+        fun bind(character: Result) {
+            tvName.text = character.name
             Picasso.get()
-                .load(image)
+                .load(character.image)
                 .resize(500, 500)
                 .centerCrop()
-                .into(ivCharacter)
+                .into(imageViewCharacter)
+
+            itemView.setOnClickListener {
+                onClickListener(character)
+            }
         }
     }
 
@@ -41,7 +40,7 @@ class Adapter(private val characters: MutableList<Characters>) : RecyclerView.Ad
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val quake = characters[position]
-        holder.bind(quake)
+        val character = characters[position]
+        holder.bind(character)
     }
 }

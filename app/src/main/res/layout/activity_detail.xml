@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#242326">
+
+    <Button
+        android:id="@+id/detailBtnBack" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="16dp"
+        android:text="Volver"
+        android:textColor="@android:color/white"
+        android:textSize="14dp"
+        android:backgroundTint="@android:color/transparent"
+        app:icon="@android:drawable/ic_menu_revert"
+        app:iconTint="#D4D959" app:iconSize="28dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/detailCardView" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="48dp" app:cardCornerRadius="16dp" app:cardElevation="8dp" app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailBtnBack">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#363539" android:paddingBottom="16dp">
+
+            <ImageView
+                android:id="@+id/detailImageView"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:contentDescription="Imagen del personaje"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+            android:id="@+id/detailTvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Nombre del Personaje"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detailImageView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/detailTvAbout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="48dp" android:text="ABOUT THE CHARACTER"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailCardView" /> <TextView
+    android:id="@+id/detailTvStatus"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:textColor="@android:color/white"
+    android:text="STATUS"
+    android:textSize="14sp"
+    app:layout_constraintStart_toStartOf="@+id/detailTvAbout"
+    app:layout_constraintTop_toBottomOf="@+id/detailTvAbout" />
+
+    <TextView
+        android:id="@+id/detailTvSpecies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="@android:color/white"
+        android:text="SPECIES"
+        app:layout_constraintStart_toStartOf="@+id/detailTvStatus"
+        app:layout_constraintTop_toBottomOf="@+id/detailTvStatus" />
+
+    <TextView
+        android:id="@+id/detailTvGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="@android:color/white"
+        android:text="GENDER"
+        app:layout_constraintStart_toStartOf="@+id/detailTvSpecies"
+        app:layout_constraintTop_toBottomOf="@+id/detailTvSpecies" />
+
+    <TextView
+        android:id="@+id/detailTvLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="@android:color/white"
+        android:text="LOCATION"
+        app:layout_constraintStart_toStartOf="@+id/detailTvGender"
+        app:layout_constraintTop_toBottomOf="@+id/detailTvGender" />
+
+    <TextView
+        android:id="@+id/tvStatusContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Status Content"
+        android:textColor="#D4D959"
+        app:layout_constraintStart_toEndOf="@+id/detailTvStatus"
+        app:layout_constraintTop_toTopOf="@+id/detailTvStatus" />
+
+    <TextView
+        android:id="@+id/tvSpeciesContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textColor="#D4D959"
+        android:text="Species Content"
+        app:layout_constraintStart_toEndOf="@+id/detailTvSpecies"
+        app:layout_constraintTop_toTopOf="@+id/detailTvSpecies" />
+
+    <TextView
+        android:id="@+id/tvGenderContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textColor="#D4D959"
+        android:text="Gender Content"
+        app:layout_constraintStart_toEndOf="@+id/detailTvGender"
+        app:layout_constraintTop_toTopOf="@+id/detailTvGender" />
+
+    <TextView
+        android:id="@+id/tvLocationContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textColor="#D4D959"
+        android:text="Location Content"
+        app:layout_constraintStart_toEndOf="@+id/detailTvLocation"
+        app:layout_constraintTop_toTopOf="@+id/detailTvLocation" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

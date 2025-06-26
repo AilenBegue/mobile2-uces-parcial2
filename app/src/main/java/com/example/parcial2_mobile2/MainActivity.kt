@@ -2,9 +2,10 @@ package com.example.parcial2_mobile2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
+import android.widget.TextView
+import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.parcial2_mobile2.Result
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -13,35 +14,47 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var recyclerMain: RecyclerView
+    private lateinit var recyclerViewMain: RecyclerView
+    private lateinit var tvTitleMain: TextView
+    private lateinit var tvSubtitleMain: TextView
     private lateinit var adapter: Adapter
-    private var charactersList = mutableListOf<Characters>()
+    private var charactersList = mutableListOf<Result>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        recyclerMain = findViewById(R.id.recyclerMain)
+        recyclerViewMain = findViewById(R.id.recyclerViewMain)
+        tvTitleMain = findViewById(R.id.tvTitleMain)
+        tvSubtitleMain = findViewById(R.id.tvSubtitleMain)
 
-        recyclerMain.layoutManager = LinearLayoutManager(this)
+        recyclerViewMain.layoutManager = GridLayoutManager(this, 2)
         adapter = Adapter(charactersList)
-        recyclerMain.adapter = adapter
+        recyclerViewMain.adapter = adapter
+
+        getCharacters()
     }
 
     private fun getCharacters() {
         CoroutineScope(Dispatchers.IO).launch {
-            val call = getRetrofit().create(ApiService::class.java).getAllCharacters(BASE_URL)
-            val response = call.body()
+            try {
+                val call = getRetrofit().create(ApiService::class.java).getAllCharacters()
 
-            runOnUiThread {
-                if (call.isSuccessful) {
-                    val characters = response?.results
-                    characters?.forEach {
-                        charactersList.add(it)
+                runOnUiThread {
+                    if (call.isSuccessful) {
+                        val response = call.body()
+                        val characters = response?.results
+
+                        charactersList.clear()
+
+                        characters?.forEach { character ->
+                            charactersList.add(character)
+                        }
+                        adapter.notifyDataSetChanged()
                     }
-
-                    adapter.notifyDataSetChanged()
                 }
+            } catch (e: Exception) {
+                Toast.makeText(this@MainActivity, "Error: ${e.message}", Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -54,6 +67,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val BASE_URL = "https://rickandmortyapi.com/api/character"
+        const val BASE_URL = "https://rickandmortyapi.com/api/"
     }
 }
