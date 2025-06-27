@@ -1,9 +1,9 @@
 package com.example.parcial2_mobile2
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.CoroutineScope
@@ -30,6 +30,14 @@ class MainActivity : AppCompatActivity() {
 
         recyclerViewMain.layoutManager = GridLayoutManager(this, 2)
         adapter = Adapter(charactersList)
+
+        adapter.onClickListener = { character ->
+            val intent = Intent(this, DetailActivity::class.java).apply {
+                putExtra("CHARACTER_ID", character.id)
+            }
+            startActivity(intent)
+        }
+
         recyclerViewMain.adapter = adapter
 
         getCharacters()
@@ -37,7 +45,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun getCharacters() {
         CoroutineScope(Dispatchers.IO).launch {
-            try {
                 val call = getRetrofit().create(ApiService::class.java).getAllCharacters()
 
                 runOnUiThread {
@@ -53,9 +60,6 @@ class MainActivity : AppCompatActivity() {
                         adapter.notifyDataSetChanged()
                     }
                 }
-            } catch (e: Exception) {
-                Toast.makeText(this@MainActivity, "Error: ${e.message}", Toast.LENGTH_LONG).show()
-            }
         }
     }
 
