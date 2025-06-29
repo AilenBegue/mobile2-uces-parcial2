@@ -21,17 +21,23 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/detailCardView" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:id="@+id/detailCardView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginTop="48dp" app:cardCornerRadius="16dp" app:cardElevation="8dp" app:layout_constraintEnd_toEndOf="parent"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailBtnBack">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#363539" android:paddingBottom="16dp">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#363539"
+            android:paddingBottom="16dp">
 
             <ImageView
                 android:id="@+id/detailImageView"
@@ -45,32 +51,35 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
-            android:id="@+id/detailTvName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Nombre del Personaje"
-            android:textColor="@android:color/white"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/detailImageView" />
+                android:id="@+id/detailTvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Nombre del Personaje"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detailImageView" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/detailTvAbout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="48dp" android:text="ABOUT THE CHARACTER"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="100dp"
+        android:text="ABOUT THE CHARACTER"
         android:textColor="@android:color/white"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailCardView" /> <TextView
+        app:layout_constraintTop_toBottomOf="@+id/detailCardView" />
+
+    <TextView
     android:id="@+id/detailTvStatus"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"

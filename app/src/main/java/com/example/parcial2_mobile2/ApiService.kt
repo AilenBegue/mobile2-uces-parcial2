@@ -10,4 +10,13 @@ interface ApiService {
 
     @GET ("character/{id}")
     suspend fun getCharacterById(@Path("id") characterId: Int): Response<Result>
+
+    @GET ("character/?status=alive")
+    suspend fun getAliveCharacters(): Response<Characters>
+
+    @GET ("character/?status=dead")
+    suspend fun getDeadCharacters(): Response<Characters>
+
+    @GET ("character/?status=unknown")
+    suspend fun getUnknownCharacters(): Response<Characters>
 }
